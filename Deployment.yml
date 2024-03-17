@@ -14,7 +14,7 @@ spec:
       spec:
        containers:
         - name: webapp
-          image: vishalchauhan9/ansiblecicd
+          image: vishalchauhan9/ansiblecicd:latest
           imagePullPolicy: Always
           ports:
           - containerPort: 80
