@@ -52,8 +52,8 @@ pipeline {
         stage('SENDING DEPLOYMENT FILEs FROM JENKINS TO KUBERNETES SERVER OVER SSH') {
             steps {
                 sshagent(['ansible_creds']) {
-                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.63.91'
-                    sh 'scp /var/lib/jenkins/workspace/ansiblecicd/* ubuntu@172.31.63.91:/home/ubuntu/'
+                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.15.207'
+                    sh 'scp /var/lib/jenkins/workspace/ansiblecicd/* ubuntu@172.31.15.207:/home/ubuntu/'
                 }
             }
         }
