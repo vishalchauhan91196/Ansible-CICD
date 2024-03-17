@@ -39,8 +39,8 @@ pipeline {
         stage('PUSH DOCKER IMAGE') {
             steps {
                 sshagent(['ansible_creds']) {
-                    withCredentials([usernameColonPassword(credentialsId: 'dockerhub_creds', variable: 'dockerhub_creds')]) {
-                        sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.36.214 docker login -u vishalchauhan9 -p ${dockerhub_creds}"
+                    withCredentials([string(credentialsId: 'dockerhub_password', variable: 'dockerhub_password')]) {
+                        sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.36.214 docker login -u vishalchauhan9 -p ${dockerhub_password}"
                         sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.36.214 docker image push vishalchauhan9/$JOB_NAME:v1.$BUILD_ID'
                         sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.36.214 docker image push vishalchauhan9/$JOB_NAME:latest'
                     }
