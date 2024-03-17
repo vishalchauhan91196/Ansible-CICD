@@ -43,6 +43,7 @@ pipeline {
                         sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.36.214 docker login -u vishalchauhan9 -p ${dockerhub_password}"
                         sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.36.214 docker image push vishalchauhan9/$JOB_NAME:v1.$BUILD_ID'
                         sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.36.214 docker image push vishalchauhan9/$JOB_NAME:latest'
+                        sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.36.214 docker rmi -f $(docker images -aq)'
                     }
                 }
             }
