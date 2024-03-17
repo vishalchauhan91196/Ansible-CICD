@@ -36,7 +36,7 @@ pipeline {
             }
         }
 
-        stage('PUSH DOCKER IMAGE') { 
+        stage('PUSH DOCKER IMAGE') {
             steps {
                 sshagent(['ansible_creds']) {
                     withCredentials([usernameColonPassword(credentialsId: 'dockerhub_creds', variable: 'dockerhub_creds')]) {
